@@ -1,0 +1,43 @@
+﻿"Height"= IIF ( "ProductCode" = 1 , 3.5in , IIF ( "ProductCode" = 2 , 3.5in , IIF ( "ProductCode" = 3 , 4in , IIF ( "ProductCode" = 4 , 4in , IIF ( "ProductCode" = 5 , 4in , 4in ) ) ) ) )
+"Width"= IIF ( "ProductCode" = 1 , 2in , IIF ( "ProductCode" = 2 , 2in , IIF ( "ProductCode" = 3 , 3in , IIF ( "ProductCode" = 4 , 3in , IIF ( "ProductCode" = 5 , 4in , 4in ) ) ) ) )
+"N"= IIF ( "PolygonSides" > = 3 , "PolygonSides" , 3 )
+"Theta"= 360deg / "N"
+"Length"= 48in
+"Diameter"= "Length" / sin ( "Theta" / 2 )
+"CableDiameter"= 0.125in
+"CableLength"= IIF ( "ProductCode" = 2 , 12in , IIF ( "ProductCode" = 4 , 24in , IIF ( "ProductCode" = 6 , 18in , 12in ) ) )
+"D1@Extrude-Thin3"=0.1
+"FlangeHeight"= 0.1in
+"FlangeLength"= IIF ( "ProductCode" = 1 , 0.3125in , IIF ( "ProductCode" = 3 , 0.3125in , IIF ( "ProductCode" = 5 , 0.5in , 0.3125in ) ) )
+"D1@Sketch11"="Length"
+"D2@Sketch11"="N"
+"D3@Sketch11"="Diameter"
+"D1@Fixture"="Height"
+"D5@Fixture"="Width"
+"D1@Sketch12"="Diameter"
+"D2@Sketch12"="Length"
+"D3@Sketch12"="CableDiameter"
+"D4@Sketch12"="N"
+"D19@AircraftCable" = "Height" / 2
+"D1@AircraftCable" = "CableLength"
+"D1@Sketch13"="Length"
+"D3@Sketch13"="Width"/2
+"D4@Sketch13"="Length"
+"D5@Sketch13"="N"
+"D2@Sketch13"="Diameter"
+"D1@OuterFlange" = "FlangeHeight"
+"D5@OuterFlange" = "FlangeLength"
+"D19@OuterFlange" = "Height" / 2
+"D1@Sketch14"="Length"
+"D2@Sketch14"="Width"/2
+"D3@Sketch14"="Length"
+"D4@Sketch14"="N"
+"D5@Sketch14"="Diameter"
+"D1@InnerFlange" = "FlangeHeight"
+"D5@InnerFlange" = "FlangeLength"
+"D19@InnerFlange" = "Height" / 2
+"ProductCode"= 1'<<< Change for product id (1-6 -> B2R-B4P respectively)
+"AircraftCable"= IIF ( "ProductCode" = 1 , "suppressed" , IIF ( "ProductCode" = 2 , "unsuppressed" , IIF ( "ProductCode" = 3 , "suppressed" , IIF ( "ProductCode" = 4 , "unsuppressed" , IIF ( "ProductCode" = 5 , "suppressed" , "unsuppressed" ) ) ) ) )
+"OuterFlange"= IIF ( "ProductCode" = 1 , "unsuppressed" , IIF ( "ProductCode" = 2 , "suppressed" , IIF ( "ProductCode" = 3 , "unsuppressed" , IIF ( "ProductCode" = 4 , "suppressed" , IIF ( "ProductCode" = 5 , "unsuppressed" , "suppressed" ) ) ) ) )
+"InnerFlange"= IIF ( "ProductCode" = 1 , "unsuppressed" , IIF ( "ProductCode" = 2 , "suppressed" , IIF ( "ProductCode" = 3 , "unsuppressed" , IIF ( "ProductCode" = 4 , "suppressed" , IIF ( "ProductCode" = 5 , "unsuppressed" , "suppressed" ) ) ) ) )
+"PolygonSides"= 4'<<< Change for polygon sides >= 3
